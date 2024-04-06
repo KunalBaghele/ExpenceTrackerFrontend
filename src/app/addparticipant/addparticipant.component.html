@@ -1,0 +1,15 @@
+<form [formGroup]="addForm">
+  <mat-form-field>
+    <input matInput formControlName="name" placeholder="Participant Name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="group">
+      <mat-option *ngFor="let group of groups" [value]="group.name">
+        {{ group.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="submitParticipant()">Add Participant</button>
+</form>

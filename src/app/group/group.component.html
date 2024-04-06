@@ -1,0 +1,43 @@
+<div class="container">
+  <h2 mat-dialog-title>Manage Groups</h2>
+  <form (ngSubmit)="addNewGroup()">
+    <mat-form-field >
+      <mat-label>Enter Group Name</mat-label>
+      <input matInput placeholder="Enter Group Name" [(ngModel)]="newGroupName" name="groupNanme">
+    </mat-form-field><br>
+    <button mat-raised-button color="primary" type="submit">Add Group</button>
+  </form>
+
+  <div class="tableContainer">
+    <mat-table [dataSource]="groups" matSort>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Group Name</mat-header-cell>
+        <mat-cell *matCellDef="let group">
+          {{ group.name }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="totalExpense">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Total Expense</mat-header-cell>
+        <mat-cell *matCellDef="let group">
+          {{ group.totalExpense}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>View Members</mat-header-cell>
+        <mat-cell *matCellDef="let group">
+          <button mat-icon-button (click)="viewMembers(group.id)">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container> -->
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+

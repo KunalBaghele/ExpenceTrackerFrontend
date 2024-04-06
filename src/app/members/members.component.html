@@ -1,0 +1,6 @@
+<mat-dialog-content>
+  <h3>Members of group : {{groupNmae}}</h3>
+  <mat-list>
+    <mat-list-item *ngFor="let member of members"><mat-icon>person</mat-icon>  {{ member.name }}</mat-list-item>
+  </mat-list>
+</mat-dialog-content>

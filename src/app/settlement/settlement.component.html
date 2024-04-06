@@ -1,0 +1,37 @@
+<mat-form-field>
+  <mat-label>Select Group</mat-label>
+  <mat-select [(value)]="selectedGroupName">
+    <mat-option *ngFor="let group of groupNames" [value]="group.name">
+      {{ group.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field><br>
+
+<button mat-raised-button color="primary" (click)="fetchSettlements()">Fetch
+  Settlements</button>
+
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="participantName">
+    <th mat-header-cell *matHeaderCellDef>Participant</th>
+    <td mat-cell *matCellDef="let element"> {{ element.participantName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="equalShare">
+    <th mat-header-cell *matHeaderCellDef>Equal Share</th>
+    <td mat-cell *matCellDef="let element">&#8377; {{ element.equalShare }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="settlementAmount">
+    <th mat-header-cell *matHeaderCellDef>Settlement Amount</th>
+    <td mat-cell *matCellDef="let element"
+      [ngClass]="{ 'negative': element.settlementAmount > 0 }">
+      &#8377;{{ element.settlementAmount}}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+</table>

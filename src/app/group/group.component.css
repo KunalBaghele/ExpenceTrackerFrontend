@@ -1,0 +1,13 @@
+input{
+  color: black;
+}
+.tableContainer{
+  max-width: 900px;
+  margin: 0 auto;
+  width: 75%;
+}
+.container{
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}

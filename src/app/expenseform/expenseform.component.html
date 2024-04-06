@@ -1,0 +1,16 @@
+<form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput placeholder="Description" formControlName="description">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Amount" formControlName="amount">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="participant">
+      <mat-option *ngFor="let participant of participants" [value]="participant.id">
+        {{ participant.name }} ({{ participant.group.name }})
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Add Expense</button>
+</form>
